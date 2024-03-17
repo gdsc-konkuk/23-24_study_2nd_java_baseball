@@ -115,4 +115,19 @@ public class Application {
         }
         return cnt;
     }
-}
+
+    private static void verifyResult(int ballCnt, int strikeCnt) {
+
+        if (ballCnt == 0 && strikeCnt == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ballCnt > 0) {
+                System.out.print(ballCnt + "볼 ");
+            }
+            if (strikeCnt > 0) {
+                System.out.print(strikeCnt + "스트라이크");
+            }
+            System.out.println();
+        }
+    }
+
