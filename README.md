@@ -121,7 +121,9 @@
   - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
 
-<br>
+---
+
+## ⛳️ 구현 기능 목록
 
 1. 컴퓨터의 수 선정  
   - [ ] Randoms API 사용하여 랜덤 세자리 수 선정
