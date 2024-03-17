@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static constant.Constant.*;
-import static constant.InputStringError.*;
+import static exception.Exception.*;
 
 /**
  * run -> 전체 프로그램 실행을 담당.

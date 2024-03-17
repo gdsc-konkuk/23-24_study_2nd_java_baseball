@@ -1,6 +1,6 @@
-package constant;
+package exception;
 
-public class InputStringError {
+public class Exception {
 
     // 게임 진행
     public static String WRONG_LENGTH_INPUT_ERROR = "잘못된 길이의 입력입니다.";
