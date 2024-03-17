@@ -2,10 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import sun.font.TrueTypeFont;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,19 +16,13 @@ public class Application {
     private static void startGame() {
 
         ArrayList<Integer> computerNums = getComputerNums();
-        System.out.println(computerNums.get(0));
-        System.out.println(computerNums.get(1));
-        System.out.println(computerNums.get(2));
 
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             ArrayList<Integer> playerNums = getPlayerNums();
 
             int ballCnt = getBallCount(computerNums, playerNums);
-            System.out.println(ballCnt);
-
             int strikeCnt = getStrikeCount(computerNums, playerNums);
-            System.out.println(strikeCnt);
 
             if (strikeCnt == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -45,14 +37,13 @@ public class Application {
     private static ArrayList<Integer> getComputerNums() {
         ArrayList<Integer> computerNums = new ArrayList<>();
         int firstNum = Randoms.pickNumberInRange(1, 9);
-        int secondNum = Randoms.pickNumberInRange(1, 9);
 
+        int secondNum = Randoms.pickNumberInRange(1, 9);
         while (firstNum == secondNum) {
             secondNum = Randoms.pickNumberInRange(1, 9);
         }
 
         int thirdNum = Randoms.pickNumberInRange(1, 9);
-
         while (firstNum == thirdNum || secondNum == thirdNum) {
             thirdNum = Randoms.pickNumberInRange(1, 9);
         }
@@ -90,8 +81,6 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             int playerNum = playerNums.get(i);
             int computerNum = computerNums.get(i);
-            System.out.println("playerNum : " + playerNum);
-            System.out.println("computerNum : " + computerNum);
 
             if (playerNum != computerNum && computerNums.contains(playerNum)) {
                 cnt += 1;
@@ -106,8 +95,6 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             int playerNum = playerNums.get(i);
             int computerNum = computerNums.get(i);
-            System.out.println("playerNum : " + playerNum);
-            System.out.println("computerNum : " + computerNum);
 
             if (playerNum == computerNum) {
                 cnt += 1;
@@ -138,8 +125,7 @@ public class Application {
         if (isContinue == 2) {
             System.exit(0);
         } else if (isContinue == 1) {
-            ArrayList<Integer> computerNums = getComputerNums();
-            return computerNums;
+            return getComputerNums();
         } else {
             throw new IllegalArgumentException();
         }
