@@ -61,16 +61,16 @@ public class Application {
 
         validateInputNum(inputNum); // 사용자가 입력한 수 검증
 
-        playerNums.add(inputNum.charAt(0) - '0');
-        playerNums.add(inputNum.charAt(1) - '0');
-        playerNums.add(inputNum.charAt(2) - '0');
+        for (int i = 0; i < inputNum.length(); i++) {
+            playerNums.add(inputNum.charAt(i) - '0');
+        }
 
         return playerNums;
     }
 
     private static void validateInputNum(String str){
-        // null 이거나 3자리 수가 아니거나, 숫자 내에 1 ~ 9 가 아닌 수가 입력될 경우 예외 발생
-        if (!(str != null && str.matches("[1-9.]+") && str.length() == 3)) {
+        // null 이거나 3자리 수를 넘어서거나, 숫자 내에 1 ~ 9 가 아닌 수가 입력될 경우 예외 발생
+        if (!(str != null && str.matches("[1-9.]+") && !str.isEmpty() && str.length() < 4)) {
             throw new IllegalArgumentException();
         }
     }
@@ -78,7 +78,7 @@ public class Application {
     private static int getBallCount(ArrayList<Integer> computerNums,
                                     ArrayList<Integer> playerNums) {
         int cnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < playerNums.size(); i++) {
             int playerNum = playerNums.get(i);
             int computerNum = computerNums.get(i);
 
@@ -92,7 +92,7 @@ public class Application {
     private static int getStrikeCount(ArrayList<Integer> computerNums,
                                     ArrayList<Integer> playerNums) {
         int cnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < playerNums.size(); i++) {
             int playerNum = playerNums.get(i);
             int computerNum = computerNums.get(i);
 
