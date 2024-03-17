@@ -14,7 +14,22 @@ public class Application {
 
     private static void startGame() {
         ArrayList<Integer> computerNums = getComputerNums();
+        System.out.println(computerNums.get(0));
+        System.out.println(computerNums.get(1));
+        System.out.println(computerNums.get(2));
         ArrayList<Integer> playerNums = getPlayerNums();
+
+        int ballCnt = getBallCount(computerNums, playerNums);
+        System.out.println(ballCnt);
+    }
+
+    private static ArrayList<Integer> getComputerNums() {
+        ArrayList<Integer> computerNums = new ArrayList<>();
+        computerNums.add(Randoms.pickNumberInRange(1, 9));
+        computerNums.add(Randoms.pickNumberInRange(1, 9));
+        computerNums.add(Randoms.pickNumberInRange(1, 9));
+
+        return computerNums;
     }
 
     private static ArrayList<Integer> getPlayerNums() {
@@ -24,9 +39,9 @@ public class Application {
 
         validateInputNum(inputNum); // 사용자가 입력한 수 검증
 
-        playerNums.add((int) inputNum.charAt(0));
-        playerNums.add((int) inputNum.charAt(1));
-        playerNums.add((int) inputNum.charAt(2));
+        playerNums.add(inputNum.charAt(0) - '0');
+        playerNums.add(inputNum.charAt(1) - '0');
+        playerNums.add(inputNum.charAt(2) - '0');
 
         return playerNums;
     }
@@ -38,12 +53,19 @@ public class Application {
         }
     }
 
-    private static ArrayList<Integer> getComputerNums() {
-        ArrayList<Integer> computerNums = new ArrayList<>();
-        computerNums.add(Randoms.pickNumberInRange(1, 9));
-        computerNums.add(Randoms.pickNumberInRange(1, 9));
-        computerNums.add(Randoms.pickNumberInRange(1, 9));
+    private static int getBallCount(ArrayList<Integer> computerNums,
+                                    ArrayList<Integer> playerNums) {
+        int cnt = 0;
+        for (int i = 0; i < 3; i++) {
+            int playerNum = playerNums.get(i);
+            int computerNum = computerNums.get(i);
+            System.out.println("playerNum : " + playerNum);
+            System.out.println("computerNum : " + computerNum);
 
-        return computerNums;
+            if (playerNum != computerNum && computerNums.contains(playerNum)) {
+                cnt += 1;
+            }
+        }
+        return cnt;
     }
 }
