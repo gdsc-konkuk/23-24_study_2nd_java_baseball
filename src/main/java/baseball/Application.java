@@ -131,3 +131,18 @@ public class Application {
         }
     }
 
+    private static ArrayList<Integer> verifyContinueGame() {
+        String num = Console.readLine();
+        int isContinue = num.charAt(0) - '0';
+
+        if (isContinue == 2) {
+            System.exit(0);
+        } else if (isContinue == 1) {
+            ArrayList<Integer> computerNums = getComputerNums();
+            return computerNums;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return null;
+    }
+}
