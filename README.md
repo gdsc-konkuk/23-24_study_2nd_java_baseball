@@ -121,7 +121,27 @@
   - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
 
-<br>
+---
+
+## ⛳️ 구현 기능 목록
+
+1. 컴퓨터의 수 선정  
+  - [x] Randoms API 사용하여 랜덤 세자리 수 선정
+
+2. 게임 진행 로직 구현
+  - [x] Console API 사용하여 사용자의 숫자 입력 구현
+    - [x] 입력한 수에 대한 예외처리(null, 3자리 아닐경우, 0 입력될 경우)
+  - [x] 사용자의 수와 컴퓨터의 수 비교하여 볼 개수 구하기
+  - [x] 사용자의 수와 컴퓨터의 수 비교하여 스트라이크 개수 구하기
+  - [x] 3스트라이크 달성 전까지 게임 계속 진행되도록 구현
+
+3. 게임 종료 로직 구현
+  - [x] 3스트라이크 달성 후, 게임을 새로 시작하거나 종료시키는 경우 구현
+  - [x] 사용자가 잘못된 값을 입력할 경우 종료되도록 구현
+
+4. 테스트 케이스 통과 
+  - [ ] 게임 종료 후 재시작 하는 경우 통과
+  - [ ] 예외 테스트 통과
 
 ---
 
