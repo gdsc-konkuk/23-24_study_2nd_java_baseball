@@ -20,9 +20,12 @@ public class Game {
 
 
     public Game() {
-        Round round;
+
+        Computer computer = new Computer();
+        Player player = new Player();
+        Round round = new Round(computer, player);
+
         do {
-            round = new Round();
             round.startRound();
         } while (round.restart());
     }
