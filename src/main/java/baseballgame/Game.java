@@ -28,7 +28,7 @@ public class Game {
         }
     }
 
-    public static void run() {
+    public void run() {
         Game game;
         do {
             game = new Game();
