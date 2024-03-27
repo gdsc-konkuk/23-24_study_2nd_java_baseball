@@ -17,15 +17,14 @@ import static exception.Exception.*;
  * getBall -> 볼 개수 확인
  */
 public class Game {
-    List<Integer> answer = new ArrayList<>();
+
 
     public Game() {
-        while (answer.size() < ANSWER_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
+        Round round;
+        do {
+            round = new Round();
+            round.startRound();
+        } while (round.restart());
     }
 
     public void run() {
