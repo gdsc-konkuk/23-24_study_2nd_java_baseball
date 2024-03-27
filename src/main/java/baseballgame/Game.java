@@ -18,129 +18,15 @@ import static exception.Exception.*;
  */
 public class Game {
 
-
     public Game() {
-
-        Computer computer = new Computer();
-        Player player = new Player();
-        Round round = new Round(computer, player);
-
-        do {
-            round.startRound();
-        } while (round.restart());
     }
 
     public void run() {
-        Game game;
+        Round round;
         do {
-            game = new Game();
-            game.playGameOnce();
-        } while (game.restart());
-    }
-
-    private void playGameOnce() {
-        String inputString;
-        do {
-            System.out.print(INPUT_NUMBER_STRING);
-            inputString = Console.readLine();
-        } while (checkGameResult(inputString) != SUCCESS_BOOLEAN);
-    }
-
-    private boolean checkGameResult(String inputStringNum) {
-        int[] inputNumArr = changeInputStringToIntArray(inputStringNum);
-        int strike = getStrike(inputNumArr);
-        int ballWithStrike = getBall(inputNumArr);
-        printResult(strike, ballWithStrike);
-
-        if (strike == SUCCESS_STRIKE) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private void printResult(int strike, int ballWithStrike) {
-        int ball = ballWithStrike - strike;
-        if (ballWithStrike == NOTHING) {
-            printNothing();
-        } else {
-            printBall(ball);
-            printStrike(strike);
-            System.out.println();
-        }
-        printSuccess(strike);
-    }
-
-    private void printNothing() {
-        System.out.println(NOTHING_STRING);
-    }
-
-    private void printBall(int ball) {
-        if (ball > 0) {
-            System.out.print(ball + BALL_STRING);
-        }
-    }
-
-    private void printStrike(int strike) {
-        if (strike > 0) {
-            System.out.print(strike + STRIKE_STRING);
-        }
-    }
-
-    private void printSuccess(int strike) {
-        if (strike == SUCCESS_STRIKE) {
-            System.out.println(SUCCESS_STRING);
-        }
-    }
-
-    private int[] changeInputStringToIntArray(String inputStringNum) {
-        int[] intArray = new int[NORMAL_INPUT_LENGTH];
-        verifyInputStringLength(inputStringNum, NORMAL_INPUT_LENGTH);
-        for (int i = 0; i < inputStringNum.length(); i++) {
-            if (inputStringNum.charAt(i) < '0' || inputStringNum.charAt(i) > '9') {
-                throw new IllegalArgumentException(WRONG_TYPE_INPUT_ERROR);
-            }
-            intArray[i] = Integer.parseInt(inputStringNum.substring(i, i + 1));
-        }
-        return intArray;
-    }
-
-    private void verifyInputStringLength(String inputString, int correctLength) {
-        if (inputString.length() != correctLength) {
-            throw new IllegalArgumentException(WRONG_LENGTH_INPUT_ERROR + "\nExpect : " + correctLength + "\nInput : " + inputString.length());
-        }
-    }
-
-    private boolean restart() {
-        System.out.println(RESTART_MESSAGE);
-        String inputString = Console.readLine();
-        if (inputString.equals(RESTART_INPUT_STRING)) {
-            return true;
-        } else if (inputString.equals(EXIT_INPUT_STRING)) {
-            return false;
-        } else {
-            throw new IllegalArgumentException(WRONG_INPUT_ERROR);
-        }
-    }
-
-    private int getStrike(int[] inputNumber) {
-        int strike = 0;
-        for (int i = 0; i < answer.size(); i++) {
-            if (inputNumber[i] == answer.get(i)) {
-                strike++;
-            }
-        }
-        return strike;
-    }
-
-    private int getBall(int[] inputNumber) {
-        int ball = 0;
-        for (int num : inputNumber) {
-            if (answer.contains(num)) {
-                ball++;
-            }
-        }
-        return ball;
+            round = new Round();
+            round.startRound();
+        } while (round.checkRestart());
     }
 
 }

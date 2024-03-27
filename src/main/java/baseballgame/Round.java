@@ -1,30 +1,30 @@
 package baseballgame;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
-import static com.sun.corba.se.impl.activation.ServerMain.printResult;
-import static constant.Constant.INPUT_NUMBER_STRING;
-import static constant.Constant.NORMAL_INPUT_LENGTH;
-import static exception.Exception.WRONG_LENGTH_INPUT_ERROR;
-import static exception.Exception.WRONG_TYPE_INPUT_ERROR;
+import static constant.Constant.*;
+import static exception.Exception.*;
 
 public class Round {
     private final Computer computer;
     private final Player player;
 
     public void startRound() {
+        System.out.println(computer.getAnswer());
         do {
             System.out.print(INPUT_NUMBER_STRING);
             player.guessNumberInput();
-        } while(getResult());
+        } while(checkGameResult());
     }
 
-    public Round(Computer computer, Player player) {
-        this.computer = computer;
-        this.player=  player;
+    public Round() {
+        this.computer = new Computer();
+        this.player = new Player();
     }
 
-    private Boolean getResult() {
+    private boolean checkGameResult() {
         // player가 입력받은 수를 가져와서 컴퓨터의 수와 비교
         // 입력은 문자열로 받으므로, Round 클래스에서 String을 int형 배열로 바꿔주는 절차가 필요
 
@@ -33,9 +33,27 @@ public class Round {
 
         List<Integer> answer = computer.getAnswer();
 
-        Integer ball = getBall(playerNumber, answer);
-        Integer strike = getStrike(playerNumber, answer);
-        printResult(ball, strike);
+        int ballWithStrike = getBall(playerNumber, answer);
+        int strike = getStrike(playerNumber, answer);
+        printResult(strike, ballWithStrike);
+
+        if (strike == SUCCESS_STRIKE) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean checkRestart() {
+        System.out.println(RESTART_MESSAGE);
+        String inputString = Console.readLine();
+        if (inputString.equals(RESTART_INPUT_STRING)) {
+            return true;
+        } else if (inputString.equals(EXIT_INPUT_STRING)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException(WRONG_INPUT_ERROR);
+        }
     }
 
     private int[] changeInputStringToIntArray(String inputString) {
@@ -56,16 +74,58 @@ public class Round {
         }
     }
 
-    private Integer getBall(int[] playerNumber, List<Integer> answer) {
-
+    private int getBall(int[] playerNumber, List<Integer> answer) {
+        int ball = 0;
+        for (int num : playerNumber) {
+            if (answer.contains(num)) {
+                ball++;
+            }
+        }
+        return ball;
     }
 
-    private Integer getStrike(int[] playerNumber, List<Integer> answer) {
-
+    private int getStrike(int[] playerNumber, List<Integer> answer) {
+        int strike = 0;
+        for (int i = 0; i < answer.size(); i++) {
+            if (playerNumber[i] == answer.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 
-    private void printResult(Integer ball, Integer strike) {
+    private void printResult(int strike, int ballWithStrike) {
+        int ball = ballWithStrike - strike;
+        if (ballWithStrike == NOTHING) {
+            printNothing();
+        } else {
+            printBall(ball);
+            printStrike(strike);
+            System.out.println();
+        }
+        printSuccess(strike);
+    }
 
+    private void printNothing() {
+        System.out.println(NOTHING_STRING);
+    }
+
+    private void printBall(int ball) {
+        if (ball > 0) {
+            System.out.print(ball + BALL_STRING);
+        }
+    }
+
+    private void printStrike(int strike) {
+        if (strike > 0) {
+            System.out.print(strike + STRIKE_STRING);
+        }
+    }
+
+    private void printSuccess(int strike) {
+        if (strike == SUCCESS_STRIKE) {
+            System.out.println(SUCCESS_STRING);
+        }
     }
 
 }
