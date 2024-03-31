@@ -128,3 +128,13 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+---
+
+## 🧭 구현 계획
+
+- 객체 분리
+  - `사용자(플레이어)`
+  - `상대방(컴퓨터)`
+  - `게임`
+  - (추후 수정 예정)
