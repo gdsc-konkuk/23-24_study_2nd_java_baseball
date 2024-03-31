@@ -1,14 +1,14 @@
-package baseballgame;
+package baseball.src.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static constant.Constant.*;
+import static baseball.common.constant.Constant.*;
 
 public class Computer {
-    private final List<Integer> answer = new ArrayList<>();
+    private final ArrayList<Integer> answer = new ArrayList<>();
 
     public Computer() {
         while (answer.size() < ANSWER_SIZE) {
@@ -19,7 +19,7 @@ public class Computer {
         }
     }
 
-    public List<Integer> getAnswer() {
+    public ArrayList<Integer> getAnswer() {
         return answer;
     }
 
