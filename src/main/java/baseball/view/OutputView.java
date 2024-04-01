@@ -24,7 +24,4 @@ public class OutputView {
 		printer.globalPrint(GREETING);
 	}
 
-	public void printPlayerName(String playerName) {
-		printer.globalPrint(playerName);
-	}
 }
