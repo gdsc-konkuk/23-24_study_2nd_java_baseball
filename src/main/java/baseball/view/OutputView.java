@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.util.Message.*;
+
 import baseball.util.Printer;
 
 public class OutputView {
