@@ -33,4 +33,15 @@ public class Printer {
 			// might need refactoring(exception handling) here
 		}
 	}
+
+	public void globalPrint(String playerName) {
+		try {
+			bufferedWriter.write(playerName);
+			bufferedWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+			// might need refactoring(exception handling) here
+		}
+	}
 }
