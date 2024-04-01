@@ -31,4 +31,9 @@ public class GameController {
 		this.player = new Player(inputView.readPlayerName());
 	}
 
+	private void printGreeting() {
+		outputView.printGreeting(player.getPlayerName());
+	}
+
+
 }
