@@ -20,8 +20,8 @@ public class OutputView {
 		printer.globalPrint(ENTER_PLAYER_NAME);
 	}
 
-	public void printGreeting() {
-		printer.globalPrint(GREETING);
+	public void printGreeting(String playerName) {
+		printer.globalPrintlnWithPlayerName(GREETING, playerName);
 	}
 
 }
