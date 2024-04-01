@@ -15,4 +15,11 @@ public class GameController {
 		this.outputView = outputView;
 	}
 
+	public void gameStart() {
+		printGameLogo();
+		createPlayer();
+		printGreeting();
+
+	}
+
 }
