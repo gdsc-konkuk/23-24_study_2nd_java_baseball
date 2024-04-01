@@ -10,4 +10,9 @@ public class GameController {
 	private final OutputView outputView;
 	private Player player;
 
+	public GameController(InputView inputView, OutputView outputView) {
+		this.inputView = inputView;
+		this.outputView = outputView;
+	}
+
 }
