@@ -23,4 +23,14 @@ public class Printer {
 		}
 	}
 
+	public void globalPrint(Message message) {
+		try {
+			bufferedWriter.write(message.getMessage());
+			bufferedWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+			// might need refactoring(exception handling) here
+		}
+	}
 }
