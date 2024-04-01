@@ -7,4 +7,8 @@ public class Printer {
 
 	private final BufferedWriter bufferedWriter;
 
+	public Printer(BufferedWriter bufferedWriter) {
+		this.bufferedWriter = bufferedWriter;
+	}
+
 }
