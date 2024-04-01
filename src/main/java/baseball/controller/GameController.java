@@ -26,4 +26,9 @@ public class GameController {
 		outputView.printGameLogo();
 	}
 
+	private void createPlayer() {
+		outputView.printEnterPlayerName();
+		this.player = new Player(inputView.readPlayerName());
+	}
+
 }
