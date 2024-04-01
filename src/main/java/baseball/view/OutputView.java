@@ -12,4 +12,19 @@ public class OutputView {
 		this.printer = printer;
 	}
 
+	public void printGameLogo() {
+		printer.globalPrint(GAME_LOGO);
+	}
+
+	public void printEnterPlayerName() {
+		printer.globalPrint(ENTER_PLAYER_NAME);
+	}
+
+	public void printGreeting() {
+		printer.globalPrint(GREETING);
+	}
+
+	public void printPlayerName(String playerName) {
+		printer.globalPrint(playerName);
+	}
 }
