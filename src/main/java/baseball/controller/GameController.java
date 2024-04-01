@@ -22,4 +22,8 @@ public class GameController {
 
 	}
 
+	private void printGameLogo() {
+		outputView.printGameLogo();
+	}
+
 }
