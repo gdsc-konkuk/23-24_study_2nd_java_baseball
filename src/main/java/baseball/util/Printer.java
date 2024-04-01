@@ -34,9 +34,11 @@ public class Printer {
 		}
 	}
 
-	public void globalPrint(String playerName) {
+	public void globalPrintlnWithPlayerName(Message message, String playerName) {
 		try {
+			bufferedWriter.write(message.getMessage());
 			bufferedWriter.write(playerName);
+			bufferedWriter.newLine();
 			bufferedWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
