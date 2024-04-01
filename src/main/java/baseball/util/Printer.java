@@ -11,4 +11,16 @@ public class Printer {
 		this.bufferedWriter = bufferedWriter;
 	}
 
+	public void globalPrintln(Message message) {
+		try {
+			bufferedWriter.write(message.getMessage());
+			bufferedWriter.newLine();
+			bufferedWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+			// might need refactoring(exception handling) here
+		}
+	}
+
 }
