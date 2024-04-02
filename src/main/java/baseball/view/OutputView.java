@@ -12,6 +12,10 @@ public class OutputView {
 		this.printer = printer;
 	}
 
+	public void printNewLine() {
+		printer.globalNewLine();
+	}
+
 	public void printGameLogo() {
 		printer.globalPrint(GAME_LOGO);
 	}
@@ -21,7 +25,27 @@ public class OutputView {
 	}
 
 	public void printGreeting(String playerName) {
-		printer.globalPrintlnWithPlayerName(GREETING, playerName);
+		printer.globalPrintlnMessageWithString(GREETING, playerName);
+	}
+
+	public void printGameStart() {
+		printer.globalPrintln(GAME_START);
+	}
+
+	public void printEnterNumber() {
+		printer.globalPrint(ENTER_NUMBER);
+	}
+
+	public void printTryCount(int numberStringRecordSize) {
+		printer.globalPrintlnMessageWithString(TRY_COUNT, Integer.toString(numberStringRecordSize));
+	}
+
+	public void printResult(String result) {
+		printer.globalPrintlnMessageWithString(RESULT, result);
+	}
+
+	public void printEnding() {
+		printer.globalPrintln(ENDING);
 	}
 
 }

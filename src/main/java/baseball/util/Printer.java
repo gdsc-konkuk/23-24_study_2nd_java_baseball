@@ -34,10 +34,21 @@ public class Printer {
 		}
 	}
 
-	public void globalPrintlnWithPlayerName(Message message, String playerName) {
+	public void globalPrintlnMessageWithString(Message message, String string) {
 		try {
 			bufferedWriter.write(message.getMessage());
-			bufferedWriter.write(playerName);
+			bufferedWriter.write(string);
+			bufferedWriter.newLine();
+			bufferedWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+			// might need refactoring(exception handling) here
+		}
+	}
+
+	public void globalNewLine() {
+		try {
 			bufferedWriter.newLine();
 			bufferedWriter.flush();
 		} catch (IOException e) {

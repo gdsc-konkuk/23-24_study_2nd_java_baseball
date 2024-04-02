@@ -12,7 +12,13 @@ public enum Message {
 		+ "                                                                                          \n"
 		+ "                                                                                          \n"),
 	ENTER_PLAYER_NAME("플레이어 이름 입력: "),
-	GREETING("반갑습니다, ");
+	GREETING("반갑습니다, "),
+	GAME_START("--- 숫자 야구 게임 시작 ---\n"),
+	ENTER_NUMBER("> 숫자를 입력해주세요 : "),
+	RESULT("결과: "),
+	TRY_COUNT(">>> 도전 횟수: "),
+	ENDING(">>> 3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+		+ ">>> 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 	private final String message;
 
