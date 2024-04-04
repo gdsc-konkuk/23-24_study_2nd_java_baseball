@@ -1,13 +1,10 @@
 package baseball;
 
-import static baseball.Application.BALL_VALUE_MAX;
-import static baseball.Application.BALL_VALUE_MIN;
-import static baseball.Application.NUM_OF_BALL;
-
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
-
 public class Balls {
+
+  public static final int NUM_OF_BALL = 3;
+  public static final int BALL_VALUE_MIN = 1;
+  public static final int BALL_VALUE_MAX = 9;
   private final int[] ballIndex;
 
   public Balls(int[] ballIndex) {
@@ -15,29 +12,13 @@ public class Balls {
     this.ballIndex = ballIndex;
   }
 
-  public static Balls from(String ballStr) {
+  public static Balls fromStr(String ballStr) {
     int[] ballIndex = new int[BALL_VALUE_MAX + 1];
 
     for (int index = 0; index < NUM_OF_BALL; index++) {
       ballIndex[ballStr.charAt(index) - '0'] = index;
     }
 
-    return new Balls(ballIndex);
-  }
-
-  public static Balls rand() {
-    int[] ballIndex = new int[BALL_VALUE_MAX + 1];
-    Arrays.fill(ballIndex, -1);
-
-    for (int index = 0; index < NUM_OF_BALL; index++) {
-      int ball;
-
-      do {
-        ball = Randoms.pickNumberInRange(BALL_VALUE_MIN, BALL_VALUE_MAX);
-      } while (ballIndex[ball] != -1);
-
-      ballIndex[ball] = index;
-    }
     return new Balls(ballIndex);
   }
 
@@ -57,7 +38,9 @@ public class Balls {
       }
     }
 
-    return new BallCompareResult(ballCount, strikeCount);
+    boolean isEqual = strikeCount == NUM_OF_BALL;
+
+    return new BallCompareResult(ballCount, strikeCount, isEqual);
   }
 
   private void validate(int[] ballIndex) {
