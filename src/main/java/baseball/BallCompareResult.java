@@ -14,6 +14,10 @@ public class BallCompareResult {
 
   @Override
   public String toString() {
+    if (!hasBall() && !hasStrike()) {
+      return "낫싱";
+    }
+
     String result = "";
 
     if (hasBall()) {
