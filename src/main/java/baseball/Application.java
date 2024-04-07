@@ -2,34 +2,38 @@ package baseball;
 
 public class Application {
 
-  private final Machine machine;
-  private final UserInterface ui;
-  private Application() {
-    this.machine = new Machine();
-    this.ui = new UserInterface();
-  }
+  private Balls answer;
+
+  private Application() {}
 
   public static void main(String[] args) {
     final Application app = new Application();
-    final UserInterface ui = new UserInterface();
 
     do {
+      app.initGame();
       app.playGame();
-    } while (ui.askRePlay());
+    } while (UserInterface.askRePlay());
+  }
+
+  private void initGame() {
+    this.answer = new Balls();
   }
 
   private void playGame() {
-    this.machine.generateAnswer();
-
     while (true) {
-      Balls input = this.ui.getInput();
-      BallCompareResult result = this.machine.submit(input);
-      this.ui.printSubmitResult(result);
+      final String userSelection = UserInterface.getSelection();
+      final BallCompareResult result = submit(userSelection);
+      UserInterface.printResult(result);
 
       if (isGameEnd(result)) {
         break;
       }
     }
+  }
+
+  private BallCompareResult submit(String userSelection) {
+    final Balls selection = new Balls(userSelection);
+    return this.answer.compare(selection);
   }
 
   private boolean isGameEnd(BallCompareResult submissionResult) {
